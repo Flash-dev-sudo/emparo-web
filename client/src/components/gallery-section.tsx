@@ -1,34 +1,44 @@
 export default function GallerySection() {
   const galleryImages = [
     {
-      src: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600",
-      alt: "Sizzling Chicken on Grill",
+      src: "/images/ChatGPT Image May 22, 2025, 07_35_09 PM.png",
+      alt: "Flame-Grilled Peri Peri Chicken",
       title: "Flame-Grilled Perfection"
     },
     {
-      src: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600",
-      alt: "Peri Peri Spices and Herbs",
-      title: "Authentic Spices"
+      src: "/images/ChatGPT Image May 22, 2025, 07_40_16 PM.png",
+      alt: "Juicy Peri Peri Half Chicken",
+      title: "Authentic Peri Peri"
     },
     {
-      src: "https://pixabay.com/get/gc2ece77c1c3039a0be3a3b65909069696e3f5136e94b525008893f63ad51b47fcd8a6e05c76dd1bf2f4fdf52afabafb3aa99c0d4dee0d508454e05cbf3e665f6_1280.jpg",
-      alt: "Grilled Vegetables",
-      title: "Fresh & Grilled"
+      src: "/images/ChatGPT Image May 22, 2025, 08_20_28 PM.png",
+      alt: "Peri Peri Chicken Burger",
+      title: "Signature Burgers"
     },
     {
-      src: "https://images.unsplash.com/photo-1577219491135-ce391730fb2c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600",
-      alt: "Chef Preparing Food",
-      title: "Master Chef"
+      src: "/images/ChatGPT Image May 22, 2025, 08_27_31 PM.png",
+      alt: "Double Peri Peri Burger",
+      title: "Double the Flavor"
     },
     {
-      src: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600",
-      alt: "Plated Chicken Meal",
-      title: "Perfect Presentation"
+      src: "/images/ChatGPT Image May 22, 2025, 09_38_22 PM.png",
+      alt: "Spicy Chicken Wings",
+      title: "Hot Wings"
     },
     {
-      src: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600",
-      alt: "Restaurant Interior",
-      title: "Cozy Atmosphere"
+      src: "/images/ChatGPT Image May 22, 2025, 10_10_13 PM.png",
+      alt: "Peri Peri Seasoned Fries",
+      title: "Signature Sides"
+    },
+    {
+      src: "/images/ChatGPT Image May 22, 2025, 10_18_07 PM.png",
+      alt: "Loaded Peri Fries",
+      title: "Loaded Goodness"
+    },
+    {
+      src: "/images/ChatGPT Image May 22, 2025, 10_21_07 PM.png",
+      alt: "Emparo Signature Shake",
+      title: "Cool Refreshment"
     }
   ];
 

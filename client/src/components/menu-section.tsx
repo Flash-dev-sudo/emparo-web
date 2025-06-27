@@ -9,6 +9,40 @@ export default function MenuSection() {
   const [filteredItems, setFilteredItems] = useState<MenuItem[]>([]);
   const { addToCart } = useCart();
 
+  const getImageForCategory = (category: string, id: number) => {
+    const imageMap: { [key: string]: string[] } = {
+      'Grilled Chicken': [
+        '/images/ChatGPT Image May 22, 2025, 07_35_09 PM.png',
+        '/images/ChatGPT Image May 22, 2025, 07_40_16 PM.png',
+        '/images/ChatGPT Image May 22, 2025, 07_51_37 PM.png'
+      ],
+      'Burgers': [
+        '/images/ChatGPT Image May 22, 2025, 08_20_28 PM.png',
+        '/images/ChatGPT Image May 22, 2025, 08_27_31 PM.png'
+      ],
+      'Wings & Strips': [
+        '/images/ChatGPT Image May 22, 2025, 09_38_22 PM.png',
+        '/images/ChatGPT Image May 22, 2025, 10_02_17 PM.png',
+        '/images/ChatGPT Image May 22, 2025, 10_07_25 PM.png'
+      ],
+      'Wraps': [
+        '/images/ChatGPT Image May 22, 2025, 09_20_56 PM.png'
+      ],
+      'Sides': [
+        '/images/ChatGPT Image May 22, 2025, 10_10_13 PM.png',
+        '/images/ChatGPT Image May 22, 2025, 10_18_07 PM.png'
+      ],
+      'Drinks': [
+        '/images/ChatGPT Image May 22, 2025, 10_21_07 PM.png',
+        '/images/ChatGPT Image May 22, 2025, 10_24_05 PM.png',
+        '/images/ChatGPT Image May 22, 2025, 10_24_17 PM.png'
+      ]
+    };
+
+    const images = imageMap[category] || imageMap['Grilled Chicken'];
+    return images[(id - 1) % images.length];
+  };
+
   const {
     data: menuItems = [],
     isLoading,
@@ -36,8 +70,9 @@ export default function MenuSection() {
     });
   };
 
-  const getHeatLevelIcons = (level: number) => {
-    return Array.from({ length: level }, (_, i) => (
+  const getHeatLevelIcons = (level: number | null) => {
+    const heatLevel = level || 1;
+    return Array.from({ length: heatLevel }, (_, i) => (
       <i key={i} className="fas fa-fire text-sm text-emparo-orange"></i>
     ));
   };
@@ -126,7 +161,7 @@ export default function MenuSection() {
                   className="bg-white rounded-2xl shadow-lg overflow-hidden card-hover"
                 >
                   <img
-                    src={item.image}
+                    src={item.image === "image" ? getImageForCategory(item.category, item.id) : item.image}
                     alt={item.name}
                     className="w-full h-48 object-cover"
                   />
