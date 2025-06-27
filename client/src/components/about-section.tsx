@@ -60,28 +60,27 @@ export default function AboutSection() {
           </div>
 
           {/* Image */}
-          <div className="relative">
-            <img
-              src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=1000"
-              alt="Restaurant Team Preparing Food"
-              className="rounded-2xl shadow-2xl w-full h-auto"
-            />
-            <div className="absolute -bottom-6 -left-6 bg-emparo-orange text-white p-6 rounded-2xl shadow-xl">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+            <div className="bg-emparo-orange text-white p-8 rounded-2xl shadow-xl">
               <div className="text-center">
-                <div className="flex items-center justify-center mb-2">
-                  <i className="fas fa-map-marker-alt mr-2"></i>
+                <div className="flex items-center justify-center mb-4">
+                  <i className="fas fa-map-marker-alt text-3xl"></i>
                 </div>
-                <div className="font-bold text-sm">Location</div>
-                <div className="text-xs">24 Blackstock Rd, N4 2DW</div>
+                <div className="font-bold text-xl mb-2">Visit Us</div>
+                <div className="text-lg">24 Blackstock Road</div>
+                <div className="text-lg">Finsbury Park, London</div>
+                <div className="text-lg">N4 2DW</div>
               </div>
             </div>
-            <div className="absolute -top-6 -right-6 bg-white text-emparo-black p-6 rounded-2xl shadow-xl">
+            <div className="bg-white text-emparo-black p-8 rounded-2xl shadow-xl border-2 border-emparo-orange">
               <div className="text-center">
-                <div className="flex items-center justify-center mb-2">
-                  <i className="fas fa-clock text-emparo-orange"></i>
+                <div className="flex items-center justify-center mb-4">
+                  <i className="fas fa-clock text-emparo-orange text-3xl"></i>
                 </div>
-                <div className="font-bold text-sm">Hours</div>
-                <div className="text-xs">Daily 1 PM–4 AM</div>
+                <div className="font-bold text-xl mb-2 text-emparo-orange">Opening Hours</div>
+                <div className="text-lg font-semibold">Monday - Sunday</div>
+                <div className="text-lg">1:00 PM - 4:00 AM</div>
+                <div className="text-sm text-gray-600 mt-2">Late night dining available</div>
               </div>
             </div>
           </div>

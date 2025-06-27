@@ -1,10 +1,17 @@
+import { useQuery } from '@tanstack/react-query';
+import { type MenuItem } from '@/types/menu';
+
 export default function FeaturedDishes() {
+  const { data: menuItems } = useQuery<MenuItem[]>({
+    queryKey: ['/api/menu'],
+  });
+
   const featuredItems = [
     {
       id: 1,
       title: "Authentic Grilled Chicken",
-      subtitle: "Authentic Grilled Chicken & Peri Peri Specialities",
-      description: "Experience the authentic taste of flame-grilled peri peri chicken, fresh stone-baked pizzas, and mouth-watering specialities that will ignite your taste buds.",
+      subtitle: "Flame-grilled perfection marinated for 24 hours",
+      description: "Experience the authentic taste of flame-grilled peri peri chicken, marinated for twenty-four hours, steam cooked, and grilled to order. This is the secret behind our signature dishes.",
       image: "/images/ChatGPT Image May 22, 2025, 07_35_09 PM.png",
       rating: "4.9/5 Customer Rating"
     },
@@ -12,20 +19,36 @@ export default function FeaturedDishes() {
       id: 2,
       title: "Popular Menu Items",
       subtitle: "Discover our most loved dishes, made fresh daily with authentic flavors",
-      items: [
+      items: menuItems ? [
         {
-          name: "Crispy Chicken Burger",
-          description: "Golden crispy chicken with fresh salad and fries",
+          name: menuItems.find(item => item.category === "Burgers")?.name || "Peri Peri Chicken Burger",
+          description: menuItems.find(item => item.category === "Burgers")?.description || "Grilled chicken breast with lettuce, tomato, and signature peri peri mayo",
           image: "/images/ChatGPT Image May 22, 2025, 08_20_28 PM.png"
         },
         {
-          name: "Peri Peri Wrap",
-          description: "Spicy chicken strips wrapped with fresh vegetables",
+          name: menuItems.find(item => item.category === "Wraps")?.name || "Peri Peri Chicken Wrap",
+          description: menuItems.find(item => item.category === "Wraps")?.description || "Grilled chicken strips with fresh salad and peri peri sauce",
           image: "/images/ChatGPT Image May 22, 2025, 09_20_56 PM.png"
         },
         {
-          name: "Glazed Peri Wings",
-          description: "Perfectly glazed wings with authentic peri peri sauce",
+          name: menuItems.find(item => item.category === "Wings & Strips")?.name || "Peri Peri Chicken Wings",
+          description: menuItems.find(item => item.category === "Wings & Strips")?.description || "Succulent wings marinated and grilled with your choice of spice level",
+          image: "/images/ChatGPT Image May 22, 2025, 09_38_22 PM.png"
+        }
+      ] : [
+        {
+          name: "Peri Peri Chicken Burger",
+          description: "Grilled chicken breast with lettuce, tomato, and signature peri peri mayo",
+          image: "/images/ChatGPT Image May 22, 2025, 08_20_28 PM.png"
+        },
+        {
+          name: "Peri Peri Chicken Wrap",
+          description: "Grilled chicken strips with fresh salad and peri peri sauce",
+          image: "/images/ChatGPT Image May 22, 2025, 09_20_56 PM.png"
+        },
+        {
+          name: "Peri Peri Chicken Wings",
+          description: "Succulent wings marinated and grilled with your choice of spice level",
           image: "/images/ChatGPT Image May 22, 2025, 09_38_22 PM.png"
         }
       ]
@@ -52,13 +75,13 @@ export default function FeaturedDishes() {
                 <i className="fas fa-kiwi-bird text-emparo-orange text-xl"></i>
               </div>
               
-              <h2 className="font-bold text-3xl md:text-4xl mb-4">
+              <h2 className="font-bold text-3xl md:text-4xl mb-4 leading-tight">
                 {featuredItems[0].title}
               </h2>
-              <p className="text-xl mb-6 text-orange-100">
+              <p className="text-xl mb-6 text-orange-100 leading-relaxed">
                 {featuredItems[0].subtitle}
               </p>
-              <p className="text-orange-100 mb-8 leading-relaxed">
+              <p className="text-orange-100 mb-8 leading-relaxed text-lg">
                 {featuredItems[0].description}
               </p>
               

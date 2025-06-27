@@ -45,9 +45,10 @@ export default function HeroSection() {
         </h1>
 
         {/* Subheading */}
-        <p className="text-xl md:text-2xl text-gray-200 mb-8 max-w-2xl mx-auto animate-slide-up">
-          Experience the authentic taste of flame-grilled perfection with our
-          signature peri peri spices
+        <p className="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto animate-slide-up leading-relaxed">
+          Marinated for twenty-four hours, steam cooked, grilled to order.
+          <br className="hidden md:block" />
+          Experience flame-grilled perfection with our signature peri peri spices.
         </p>
 
         {/* CTA Buttons */}
