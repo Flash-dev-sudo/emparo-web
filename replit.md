@@ -118,6 +118,19 @@ The application is structured for deployment on Render with the following consid
 - Improved contrast and spacing for better text readability
 - Added bold emphasis to key restaurant process description
 
+### June 27, 2025 - Till System Integration
+- Integrated with complete till/queue system database (libsql://emapro-flash.aws-eu-west-1.turso.io)
+- Updated database credentials to connect to production till system
+- Verified 14 authentic menu items across 6 categories:
+  - Grilled Chicken (3 items)
+  - Burgers (2 items) 
+  - Wraps (1 item)
+  - Wings & Strips (3 items)
+  - Sides (2 items)
+  - Drinks (3 items)
+- Website now synchronized with till system for real-time menu updates
+- Dynamic category filtering based on actual database structure
+
 ### Architecture Changes
 - **Home Page**: Now focuses on visual appeal with featured dishes, no pricing
 - **Order Page**: Dedicated menu with full ordering functionality and cart

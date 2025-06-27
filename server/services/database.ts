@@ -3,8 +3,8 @@ import { drizzle } from "drizzle-orm/libsql";
 import { eq } from "drizzle-orm";
 import { menuItems, type MenuItem } from "@shared/schema";
 
-const DATABASE_URL = process.env.DATABASE_URL || "libsql://emparo-periperi-flash.aws-eu-west-1.turso.io";
-const DATABASE_AUTH_TOKEN = process.env.DATABASE_AUTH_TOKEN || "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhIjoicnciLCJpYXQiOjE3NTEwNTE2NjksImlkIjoiNGNiZGQ0MjctZmY2NS00YzZkLTlkY2QtNGMwYTEwODkzNTUwIiwicmlkIjoiNDYzOGQ5OTQtM2IzNS00NGQ3LWI3MTYtNTExYWMwZmRmMWYzIn0.4puL-wZhuvPDqvwQEk77Bl5BhsXppCEEscL8tHwhMwbndnsnExtJQHPoPt0uM2PwOsCQ_KoUNtVJADqvLZj5BQ";
+const DATABASE_URL = process.env.DATABASE_URL || "libsql://emapro-flash.aws-eu-west-1.turso.io";
+const DATABASE_AUTH_TOKEN = process.env.DATABASE_AUTH_TOKEN || "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhIjoicnciLCJpYXQiOjE3NDg3MzI4MjgsImlkIjoiNDVlNjg2NjQtZTk5NC00NmYyLWE3NjYtN2Y1NjlkM2M2ZjU0IiwicmlkIjoiNmI1NzJlN2ItMzVlNS00NDJlLTg3MzgtZmQ1ZGZjMWM4MjYyIn0.OdhTd-h9N4OFqGGDCdgdp2fmIJ4XyYM2vYUWobZl0wBzWcPM9cVmQpXPNrBZfFQdDWmjw9s0_SLT7-bSfJLbCg";
 
 const client = createClient({
   url: DATABASE_URL,
