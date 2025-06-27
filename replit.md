@@ -109,6 +109,15 @@ The application is structured for deployment on Render with the following consid
 - Removed prices from home page for cleaner aesthetic presentation
 - Added phone number: 020 3441 6940
 
+### June 27, 2025 - Database Integration & Readability Improvements
+- Connected to live Turso database with authentic menu data (14 items)
+- Removed person image from About section for cleaner aesthetic
+- Enhanced text readability across all sections with improved typography
+- Added loading states for dynamic content from database
+- Updated featured dishes to display actual menu items from database
+- Improved contrast and spacing for better text readability
+- Added bold emphasis to key restaurant process description
+
 ### Architecture Changes
 - **Home Page**: Now focuses on visual appeal with featured dishes, no pricing
 - **Order Page**: Dedicated menu with full ordering functionality and cart

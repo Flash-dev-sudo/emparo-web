@@ -2,9 +2,22 @@ import { useQuery } from '@tanstack/react-query';
 import { type MenuItem } from '@/types/menu';
 
 export default function FeaturedDishes() {
-  const { data: menuItems } = useQuery<MenuItem[]>({
+  const { data: menuItems, isLoading } = useQuery<MenuItem[]>({
     queryKey: ['/api/menu'],
   });
+
+  if (isLoading) {
+    return (
+      <section id="featured" className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-emparo-orange"></div>
+            <p className="mt-4 text-gray-600">Loading featured dishes...</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   const featuredItems = [
     {
@@ -19,20 +32,20 @@ export default function FeaturedDishes() {
       id: 2,
       title: "Popular Menu Items",
       subtitle: "Discover our most loved dishes, made fresh daily with authentic flavors",
-      items: menuItems ? [
+      items: menuItems && Array.isArray(menuItems) ? [
         {
-          name: menuItems.find(item => item.category === "Burgers")?.name || "Peri Peri Chicken Burger",
-          description: menuItems.find(item => item.category === "Burgers")?.description || "Grilled chicken breast with lettuce, tomato, and signature peri peri mayo",
+          name: menuItems.find((item: MenuItem) => item.category === "Burgers")?.name || "Peri Peri Chicken Burger",
+          description: menuItems.find((item: MenuItem) => item.category === "Burgers")?.description || "Grilled chicken breast with lettuce, tomato, and signature peri peri mayo",
           image: "/images/ChatGPT Image May 22, 2025, 08_20_28 PM.png"
         },
         {
-          name: menuItems.find(item => item.category === "Wraps")?.name || "Peri Peri Chicken Wrap",
-          description: menuItems.find(item => item.category === "Wraps")?.description || "Grilled chicken strips with fresh salad and peri peri sauce",
+          name: menuItems.find((item: MenuItem) => item.category === "Wraps")?.name || "Peri Peri Chicken Wrap",
+          description: menuItems.find((item: MenuItem) => item.category === "Wraps")?.description || "Grilled chicken strips with fresh salad and peri peri sauce",
           image: "/images/ChatGPT Image May 22, 2025, 09_20_56 PM.png"
         },
         {
-          name: menuItems.find(item => item.category === "Wings & Strips")?.name || "Peri Peri Chicken Wings",
-          description: menuItems.find(item => item.category === "Wings & Strips")?.description || "Succulent wings marinated and grilled with your choice of spice level",
+          name: menuItems.find((item: MenuItem) => item.category === "Wings & Strips")?.name || "Peri Peri Chicken Wings",
+          description: menuItems.find((item: MenuItem) => item.category === "Wings & Strips")?.description || "Succulent wings marinated and grilled with your choice of spice level",
           image: "/images/ChatGPT Image May 22, 2025, 09_38_22 PM.png"
         }
       ] : [
@@ -114,10 +127,10 @@ export default function FeaturedDishes() {
 
         {/* Popular Items Grid */}
         <div className="text-center mb-12">
-          <h2 className="font-bold text-4xl md:text-5xl text-emparo-black mb-4">
+          <h2 className="font-bold text-4xl md:text-5xl text-emparo-black mb-6 leading-tight">
             Popular <span className="text-emparo-orange">Menu Items</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
             {featuredItems[1].subtitle}
           </p>
         </div>
@@ -139,10 +152,10 @@ export default function FeaturedDishes() {
                 </div>
               </div>
               <div className="p-6">
-                <h3 className="font-bold text-xl text-emparo-black mb-3">
+                <h3 className="font-bold text-xl text-emparo-black mb-3 leading-tight">
                   {item.name}
                 </h3>
-                <p className="text-gray-600 mb-4">
+                <p className="text-gray-700 mb-4 leading-relaxed">
                   {item.description}
                 </p>
                 <a

@@ -34,11 +34,11 @@ export default function AboutSection() {
             <h2 className="font-bold text-4xl md:text-5xl text-emparo-black mb-6">
               Our Story
             </h2>
-            <p className="text-lg text-gray-600 mb-6">
+            <p className="text-lg text-gray-700 mb-6 leading-relaxed">
               Located in the heart of Finsbury Park at 24 Blackstock Road, Emparo Peri Peri brings you the finest in authentic flame-grilled cuisine. Our journey began with a simple mission: to share the bold, fiery flavors of peri peri with London food lovers.
             </p>
-            <p className="text-lg text-gray-600 mb-8">
-              Marinated for twenty-four hours, steam cooked, grilled to order. This is the secret behind our chicken. However, we also do so much more, including beef burgers made from 99% British and Irish beef. Every dish is crafted with care using only the freshest ingredients.
+            <p className="text-lg text-gray-700 mb-8 leading-relaxed">
+              <strong>Marinated for twenty-four hours, steam cooked, grilled to order.</strong> This is the secret behind our chicken. However, we also do so much more, including beef burgers made from 99% British and Irish beef. Every dish is crafted with care using only the freshest ingredients.
             </p>
 
             {/* Values */}
