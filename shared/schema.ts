@@ -8,8 +8,6 @@ export const menuItems = pgTable("menu_items", {
   description: text("description").notNull(),
   price: real("price").notNull(),
   category: text("category").notNull(),
-  image: text("image"),
-  heatLevel: integer("heat_level"),
 });
 
 export const insertMenuItemSchema = createInsertSchema(menuItems).omit({

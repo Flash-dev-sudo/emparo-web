@@ -11,35 +11,31 @@ export default function MenuSection() {
 
   const getImageForCategory = (category: string, id: number) => {
     const imageMap: { [key: string]: string[] } = {
-      'Grilled Chicken': [
-        '/images/ChatGPT Image May 22, 2025, 07_35_09 PM.png',
-        '/images/ChatGPT Image May 22, 2025, 07_40_16 PM.png',
-        '/images/ChatGPT Image May 22, 2025, 07_51_37 PM.png'
-      ],
-      'Burgers': [
-        '/images/ChatGPT Image May 22, 2025, 08_20_28 PM.png',
-        '/images/ChatGPT Image May 22, 2025, 08_27_31 PM.png'
-      ],
-      'Wings & Strips': [
-        '/images/ChatGPT Image May 22, 2025, 09_38_22 PM.png',
-        '/images/ChatGPT Image May 22, 2025, 10_02_17 PM.png',
-        '/images/ChatGPT Image May 22, 2025, 10_07_25 PM.png'
-      ],
-      'Wraps': [
-        '/images/ChatGPT Image May 22, 2025, 09_20_56 PM.png'
-      ],
-      'Sides': [
+      'Starters': [
         '/images/ChatGPT Image May 22, 2025, 10_10_13 PM.png',
         '/images/ChatGPT Image May 22, 2025, 10_18_07 PM.png'
       ],
-      'Drinks': [
-        '/images/ChatGPT Image May 22, 2025, 10_21_07 PM.png',
-        '/images/ChatGPT Image May 22, 2025, 10_24_05 PM.png',
-        '/images/ChatGPT Image May 22, 2025, 10_24_17 PM.png'
+      'Platters': [
+        '/images/ChatGPT Image May 22, 2025, 07_35_09 PM.png',
+        '/images/ChatGPT Image May 22, 2025, 09_38_22 PM.png'
+      ],
+      'Fried Chicken': [
+        '/images/ChatGPT Image May 22, 2025, 07_40_16 PM.png',
+        '/images/ChatGPT Image May 22, 2025, 10_02_17 PM.png',
+        '/images/ChatGPT Image May 22, 2025, 10_07_25 PM.png'
+      ],
+      'Pizzas': [
+        '/images/ChatGPT Image May 22, 2025, 08_20_28 PM.png',
+        '/images/ChatGPT Image May 22, 2025, 08_27_31 PM.png'
+      ],
+      'Mains': [
+        '/images/ChatGPT Image May 22, 2025, 07_51_37 PM.png',
+        '/images/ChatGPT Image May 22, 2025, 09_20_56 PM.png',
+        '/images/ChatGPT Image May 22, 2025, 07_35_09 PM.png'
       ]
     };
 
-    const images = imageMap[category] || imageMap['Grilled Chicken'];
+    const images = imageMap[category] || imageMap['Mains'];
     return images[(id - 1) % images.length];
   };
 

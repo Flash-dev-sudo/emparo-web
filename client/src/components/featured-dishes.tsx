@@ -34,13 +34,13 @@ export default function FeaturedDishes() {
       subtitle: "Discover our most loved dishes, made fresh daily with authentic flavors",
       items: menuItems && Array.isArray(menuItems) ? [
         {
-          name: menuItems.find((item: MenuItem) => item.category === "Burgers")?.name || "Peri Peri Chicken Burger",
-          description: menuItems.find((item: MenuItem) => item.category === "Burgers")?.description || "Grilled chicken breast with lettuce, tomato, and signature peri peri mayo",
+          name: menuItems.find((item: MenuItem) => item.category === "Fried Chicken")?.name || "Fried Chicken Burger",
+          description: menuItems.find((item: MenuItem) => item.category === "Fried Chicken")?.description || "Crispy fried chicken breast in a brioche bun with salad",
           image: "/images/ChatGPT Image May 22, 2025, 08_20_28 PM.png"
         },
         {
-          name: menuItems.find((item: MenuItem) => item.category === "Wraps")?.name || "Peri Peri Chicken Wrap",
-          description: menuItems.find((item: MenuItem) => item.category === "Wraps")?.description || "Grilled chicken strips with fresh salad and peri peri sauce",
+          name: menuItems.find((item: MenuItem) => item.category === "Mains")?.name || "Grilled Chicken Breast",
+          description: menuItems.find((item: MenuItem) => item.category === "Mains")?.description || "Tender grilled chicken breast marinated in peri peri spices",
           image: "/images/ChatGPT Image May 22, 2025, 09_20_56 PM.png"
         },
         {
