@@ -18,10 +18,12 @@ export default function MenuSection() {
   });
 
   useEffect(() => {
-    if (activeCategory === 'all') {
-      setFilteredItems(menuItems);
-    } else {
-      setFilteredItems(menuItems.filter(item => item.category === activeCategory));
+    if (menuItems && menuItems.length > 0) {
+      if (activeCategory === 'all') {
+        setFilteredItems(menuItems);
+      } else {
+        setFilteredItems(menuItems.filter(item => item.category === activeCategory));
+      }
     }
   }, [menuItems, activeCategory]);
 
