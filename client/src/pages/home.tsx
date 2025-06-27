@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Navigation from '@/components/navigation';
 import CartOverlay from '@/components/cart-overlay';
 import HeroSection from '@/components/hero-section';
-import MenuSection from '@/components/menu-section';
+import FeaturedDishes from '@/components/featured-dishes';
 import GallerySection from '@/components/gallery-section';
 import AboutSection from '@/components/about-section';
 import ContactSection from '@/components/contact-section';
@@ -16,7 +16,7 @@ export default function Home() {
       <Navigation onCartToggle={() => setIsCartOpen(true)} />
       <CartOverlay isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
       <HeroSection />
-      <MenuSection />
+      <FeaturedDishes />
       <GallerySection />
       <AboutSection />
       <ContactSection />

@@ -48,18 +48,18 @@ export default function Navigation({ onCartToggle }: NavigationProps) {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <button
-              onClick={() => scrollToSection('home')}
+            <a
+              href="/"
               className="text-emparo-black hover:text-emparo-orange transition-colors duration-200 font-medium"
             >
               Home
-            </button>
-            <button
-              onClick={() => scrollToSection('menu')}
+            </a>
+            <a
+              href="/order"
               className="text-emparo-black hover:text-emparo-orange transition-colors duration-200 font-medium"
             >
-              Menu
-            </button>
+              Order Menu
+            </a>
             <button
               onClick={() => scrollToSection('gallery')}
               className="text-emparo-black hover:text-emparo-orange transition-colors duration-200 font-medium"
@@ -110,18 +110,18 @@ export default function Navigation({ onCartToggle }: NavigationProps) {
         {isMobileMenuOpen && (
           <div className="md:hidden bg-white border-t border-gray-200 py-4">
             <div className="flex flex-col space-y-4 px-4">
-              <button
-                onClick={() => scrollToSection('home')}
+              <a
+                href="/"
                 className="text-left text-emparo-black hover:text-emparo-orange transition-colors duration-200 font-medium"
               >
                 Home
-              </button>
-              <button
-                onClick={() => scrollToSection('menu')}
+              </a>
+              <a
+                href="/order"
                 className="text-left text-emparo-black hover:text-emparo-orange transition-colors duration-200 font-medium"
               >
-                Menu
-              </button>
+                Order Menu
+              </a>
               <button
                 onClick={() => scrollToSection('gallery')}
                 className="text-left text-emparo-black hover:text-emparo-orange transition-colors duration-200 font-medium"

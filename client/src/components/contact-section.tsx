@@ -66,12 +66,12 @@ export default function ContactSection() {
     {
       icon: "fas fa-map-marker-alt",
       title: "Address",
-      content: "123 Flame Street, Grill District\nFood City, FC 12345"
+      content: "24 Blackstock Rd, Finsbury Park\nLondon N4 2DW"
     },
     {
       icon: "fas fa-phone",
       title: "Phone",
-      content: "+1 (555) EMPARO-1\n+1 (555) 367-2761"
+      content: "020 3441 6940"
     },
     {
       icon: "fas fa-envelope",
@@ -81,7 +81,7 @@ export default function ContactSection() {
     {
       icon: "fas fa-clock",
       title: "Hours",
-      content: "Mon - Thu: 11:00 AM - 10:00 PM\nFri - Sat: 11:00 AM - 11:00 PM\nSunday: 12:00 PM - 9:00 PM"
+      content: "Monday - Sunday: 1:00 PM - 4:00 AM\nLate night dining available"
     }
   ];
 

@@ -76,7 +76,7 @@ export default function Footer() {
             <div className="space-y-2 text-gray-400">
               <p>
                 <i className="fas fa-phone mr-2 text-emparo-orange"></i>
-                +1 (555) 367-2761
+                020 3441 6940
               </p>
               <p>
                 <i className="fas fa-envelope mr-2 text-emparo-orange"></i>
@@ -84,7 +84,7 @@ export default function Footer() {
               </p>
               <p>
                 <i className="fas fa-map-marker-alt mr-2 text-emparo-orange"></i>
-                123 Flame Street, Food City
+                24 Blackstock Rd, Finsbury Park
               </p>
             </div>
           </div>
