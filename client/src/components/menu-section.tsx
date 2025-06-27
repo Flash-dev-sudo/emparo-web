@@ -62,7 +62,7 @@ export default function MenuSection() {
       id: item.id,
       name: item.name,
       price: item.price,
-      image: item.image,
+      image: getImageForCategory(item.category, item.id),
     });
   };
 
@@ -154,55 +154,60 @@ export default function MenuSection() {
           </div>
         )}
 
-        {/* Menu Items Grid */}
+        {/* Menu Items List */}
         {!isLoading && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+          <div className="space-y-4">
             {filteredItems.length === 0 ? (
-              <div className="col-span-full text-center py-12">
+              <div className="text-center py-12">
                 <i className="fas fa-utensils text-4xl text-gray-400 mb-4"></i>
-                <p className="text-gray-600">No menu items available in this category.</p>
+                <p className="text-gray-600 text-lg">No menu items available in this category.</p>
               </div>
             ) : (
               filteredItems.map((item) => (
                 <div
                   key={item.id}
-                  className="bg-white rounded-2xl shadow-lg overflow-hidden card-hover"
+                  className="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 p-6 border border-gray-100"
                 >
-                  <img
-                    src={item.image === "image" ? getImageForCategory(item.category, item.id) : item.image}
-                    alt={item.name}
-                    className="w-full h-48 object-cover"
-                  />
-                  <div className="p-6">
-                    <div className="flex justify-between items-start mb-3">
-                      <h3 className="font-bold text-xl text-emparo-black">
-                        {item.name}
-                      </h3>
-                      <span className="bg-emparo-orange text-white px-3 py-1 rounded-full text-sm font-semibold">
-                        ${item.price.toFixed(2)}
-                      </span>
-                    </div>
-                    <p className="text-gray-600 text-sm mb-4">
-                      {item.description}
-                    </p>
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center space-x-1">
-                        <div className="flex">
-                          {getHeatLevelIcons(item.heatLevel)}
-                        </div>
-                        <span className="text-xs text-gray-500 ml-2">
-                          {(item.heatLevel || 1) === 1 && 'Mild Heat'}
-                          {(item.heatLevel || 1) === 2 && 'Medium Heat'}
-                          {(item.heatLevel || 1) === 3 && 'Hot'}
-                          {(item.heatLevel || 1) >= 4 && 'Extra Hot'}
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                    {/* Left Content */}
+                    <div className="flex-1">
+                      <div className="flex items-start justify-between mb-2">
+                        <h3 className="font-bold text-2xl text-emparo-black leading-tight pr-4">
+                          {item.name}
+                        </h3>
+                        <span className="bg-emparo-orange text-white px-4 py-2 rounded-full text-lg font-bold flex-shrink-0">
+                          £{item.price.toFixed(2)}
                         </span>
                       </div>
+                      <p className="text-gray-700 text-base leading-relaxed mb-4 max-w-3xl">
+                        {item.description}
+                      </p>
+                      <div className="flex items-center gap-4">
+                        <span className="text-sm font-medium text-gray-600 bg-gray-100 px-3 py-1 rounded-full">
+                          {item.category}
+                        </span>
+                        <div className="flex items-center gap-1">
+                          {Array.from({ length: Math.min(item.heatLevel || 1, 5) }, (_, i) => (
+                            <i key={i} className="fas fa-fire text-sm text-emparo-orange"></i>
+                          ))}
+                          <span className="text-sm text-gray-600 ml-1 font-medium">
+                            {(item.heatLevel || 1) === 1 && 'Mild'}
+                            {(item.heatLevel || 1) === 2 && 'Medium'}
+                            {(item.heatLevel || 1) === 3 && 'Hot'}
+                            {(item.heatLevel || 1) >= 4 && 'Extra Hot'}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Right Button */}
+                    <div className="flex-shrink-0 sm:ml-4">
                       <Button
                         onClick={() => handleAddToCart(item)}
-                        className="bg-emparo-orange text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors duration-200 font-medium"
+                        className="bg-emparo-orange hover:bg-emparo-orange/90 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:scale-105 shadow-md w-full sm:w-auto"
                       >
-                        <i className="fas fa-plus mr-1"></i>
-                        Add
+                        <i className="fas fa-plus mr-2"></i>
+                        Add to Cart
                       </Button>
                     </div>
                   </div>
