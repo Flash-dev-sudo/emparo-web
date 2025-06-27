@@ -183,10 +183,10 @@ export default function MenuSection() {
                           {getHeatLevelIcons(item.heatLevel)}
                         </div>
                         <span className="text-xs text-gray-500 ml-2">
-                          {item.heatLevel === 1 && 'Mild Heat'}
-                          {item.heatLevel === 2 && 'Medium Heat'}
-                          {item.heatLevel === 3 && 'Hot'}
-                          {item.heatLevel >= 4 && 'Extra Hot'}
+                          {(item.heatLevel || 1) === 1 && 'Mild Heat'}
+                          {(item.heatLevel || 1) === 2 && 'Medium Heat'}
+                          {(item.heatLevel || 1) === 3 && 'Hot'}
+                          {(item.heatLevel || 1) >= 4 && 'Extra Hot'}
                         </span>
                       </div>
                       <Button
