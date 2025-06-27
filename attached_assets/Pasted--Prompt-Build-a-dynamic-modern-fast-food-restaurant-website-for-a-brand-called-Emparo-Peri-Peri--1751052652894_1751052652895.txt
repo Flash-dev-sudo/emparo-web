@@ -1,0 +1,84 @@
+✅ Prompt:
+Build a dynamic, modern fast food restaurant website for a brand called Emparo Peri Peri. This is for deployment on Render, so structure it properly from the start.
+
+📌 Brand Guidelines:
+Brand Name: Emparo Peri Peri
+
+Color Theme:
+
+Orange: #F97316
+
+Black: #0F0F0F
+
+White: #FFFFFF
+
+Include a rooster symbol/logo prominently in the header or hero section.
+
+📦 Images:
+Use the food images provided in the ZIP file (/images/ folder) to populate a Gallery and showcase items in the menu.
+
+🧠 Database (Turso):
+Fetch and dynamically display menu items from the following Turso SQL database:
+
+Database URL: libsql://emparo-periperi-flash.aws-eu-west-1.turso.io
+
+Auth Token:
+
+Copy
+Edit
+eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhIjoicnciLCJpYXQiOjE3NTEwNTE2NjksImlkIjoiNGNiZGQ0MjctZmY2NS00YzZkLTlkY2QtNGMwYTEwODkzNTUwIiwicmlkIjoiNDYzOGQ5OTQtM2IzNS00NGQ3LWI3MTYtNTExYWMwZmRmMWYzIn0.4puL-wZhuvPDqvwQEk77Bl5BhsXppCEEscL8tHwhMwbndnsnExtJQHPoPt0uM2PwOsCQ_KoUNtVJADqvLZj5BQ
+The menu section should be rendered dynamically using this data.
+
+🖥️ Website Pages:
+Homepage: With rooster symbol, slogan (e.g., “Fire-Grilled Goodness”), CTA button
+
+Menu: Load from Turso DB, show styled item cards
+
+Gallery: Display all food images responsively
+
+About Us: Simple brand story
+
+Contact: UI form (no backend needed)
+
+✨ Tech & Design:
+Use HTML, CSS, and JS (vanilla or React)
+
+Use modern fonts (e.g., Montserrat, Poppins)
+
+Add transitions, hover effects, and responsive layout
+
+Use scroll animations and clean section spacing
+
+🚀 Deployment-Ready (Render):
+Set up file structure for Render deployment:
+
+If using static: all files in /public
+
+If using Node.js or Express: include server.js and start script in package.json
+
+Make sure CORS and DB access work in deployment
+
+Add render.yaml if needed for Render deployment
+
+🔁 Bonus Features (Optional):
+Add a cart UI (local, no backend)
+
+Smooth scroll navigation
+
+Sticky navbar on scroll
+
+Let me know when you're ready, and I can help you generate the project files directly.
+
+
+
+
+
+
+
+
+Is this conversation helpful so far?
+
+
+
+
+Ask ChatGPT
