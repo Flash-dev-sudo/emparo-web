@@ -96,9 +96,27 @@ The application is structured for deployment on Render with the following consid
 └── migrations/      # Database migrations
 ```
 
-## Changelog
-- June 27, 2025. Initial setup
+## Recent Changes
+
+### June 27, 2025 - Major Architecture Update
+- Separated aesthetic home page from ordering functionality
+- Added dedicated `/order` page for menu browsing and cart functionality
+- Updated navigation to include "Order Menu" link
+- Redesigned home page with featured dishes section inspired by Apple/Samsung design approach
+- Updated contact information with real London address: 24 Blackstock Rd, Finsbury Park, N4 2DW
+- Updated business hours: Daily 1 PM - 4 AM
+- Integrated actual food images from provided zip file into gallery and featured sections
+- Removed prices from home page for cleaner aesthetic presentation
+- Added phone number: 020 3441 6940
+
+### Architecture Changes
+- **Home Page**: Now focuses on visual appeal with featured dishes, no pricing
+- **Order Page**: Dedicated menu with full ordering functionality and cart
+- **Navigation**: Updated to support two-page structure
+- **Featured Dishes Component**: New component showcasing popular items without prices
+- **Image Integration**: Real food images from client's assets now used throughout
 
 ## User Preferences
 
 Preferred communication style: Simple, everyday language.
+Design preference: Clean, aesthetic approach similar to Apple/Samsung websites with separate ordering functionality.

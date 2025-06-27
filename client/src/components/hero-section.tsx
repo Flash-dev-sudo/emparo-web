@@ -1,8 +1,8 @@
 export default function HeroSection() {
-  const scrollToMenu = () => {
-    const menuSection = document.getElementById('menu');
-    if (menuSection) {
-      menuSection.scrollIntoView({ behavior: 'smooth' });
+  const scrollToFeatured = () => {
+    const element = document.getElementById('featured');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
@@ -52,18 +52,18 @@ export default function HeroSection() {
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-slide-up">
-          <button
-            onClick={scrollToMenu}
+          <a
+            href="/order"
             className="bg-emparo-orange text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-orange-600 transform hover:scale-105 transition-all duration-300 shadow-xl"
           >
             <i className="fas fa-utensils mr-2"></i>
             Order Now
-          </button>
+          </a>
           <button
-            onClick={scrollToAbout}
+            onClick={scrollToFeatured}
             className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-emparo-black transition-all duration-300"
           >
-            Learn More
+            View Specialties
           </button>
         </div>
 

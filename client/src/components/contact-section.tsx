@@ -101,10 +101,10 @@ export default function ContactSection() {
             <i className="fas fa-envelope text-white text-2xl"></i>
           </div>
           <h2 className="font-bold text-4xl md:text-5xl text-emparo-black mb-4">
-            Get In Touch
+            Visit <span className="text-emparo-orange">Us</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Have questions or feedback? We'd love to hear from you!
+            Experience authentic peri peri at our Finsbury Park location
           </p>
         </div>
 

@@ -35,10 +35,10 @@ export default function AboutSection() {
               Our Story
             </h2>
             <p className="text-lg text-gray-600 mb-6">
-              Founded with a passion for authentic flame-grilled cuisine, Emparo Peri Peri brings you the finest in African-Portuguese culinary tradition. Our journey began with a simple mission: to share the bold, fiery flavors of peri peri with food lovers everywhere.
+              Located in the heart of Finsbury Park at 24 Blackstock Road, Emparo Peri Peri brings you the finest in authentic flame-grilled cuisine. Our journey began with a simple mission: to share the bold, fiery flavors of peri peri with London food lovers.
             </p>
             <p className="text-lg text-gray-600 mb-8">
-              Every dish is crafted with care, using only the freshest ingredients and our signature peri peri spice blend that's been perfected over generations. From our flame-grilled chicken to our zesty sides, we ensure every bite delivers an unforgettable experience.
+              Marinated for twenty-four hours, steam cooked, grilled to order. This is the secret behind our chicken. However, we also do so much more, including beef burgers made from 99% British and Irish beef. Every dish is crafted with care using only the freshest ingredients.
             </p>
 
             {/* Values */}
@@ -68,14 +68,20 @@ export default function AboutSection() {
             />
             <div className="absolute -bottom-6 -left-6 bg-emparo-orange text-white p-6 rounded-2xl shadow-xl">
               <div className="text-center">
-                <div className="font-bold text-3xl">5+</div>
-                <div className="text-sm">Years of Excellence</div>
+                <div className="flex items-center justify-center mb-2">
+                  <i className="fas fa-map-marker-alt mr-2"></i>
+                </div>
+                <div className="font-bold text-sm">Location</div>
+                <div className="text-xs">24 Blackstock Rd, N4 2DW</div>
               </div>
             </div>
             <div className="absolute -top-6 -right-6 bg-white text-emparo-black p-6 rounded-2xl shadow-xl">
               <div className="text-center">
-                <div className="font-bold text-3xl text-emparo-orange">1000+</div>
-                <div className="text-sm">Happy Customers</div>
+                <div className="flex items-center justify-center mb-2">
+                  <i className="fas fa-clock text-emparo-orange"></i>
+                </div>
+                <div className="font-bold text-sm">Hours</div>
+                <div className="text-xs">Daily 1 PM–4 AM</div>
               </div>
             </div>
           </div>
