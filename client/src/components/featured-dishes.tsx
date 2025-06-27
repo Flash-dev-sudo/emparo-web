@@ -44,8 +44,8 @@ export default function FeaturedDishes() {
           image: "/images/ChatGPT Image May 22, 2025, 09_20_56 PM.png"
         },
         {
-          name: menuItems.find((item: MenuItem) => item.category === "Wings & Strips")?.name || "Peri Peri Chicken Wings",
-          description: menuItems.find((item: MenuItem) => item.category === "Wings & Strips")?.description || "Succulent wings marinated and grilled with your choice of spice level",
+          name: menuItems.find((item: MenuItem) => item.category === "Platters")?.name || "Family Platter",
+          description: menuItems.find((item: MenuItem) => item.category === "Platters")?.description || "Perfect for sharing - mixed chicken, chips, salad and bread",
           image: "/images/ChatGPT Image May 22, 2025, 09_38_22 PM.png"
         }
       ] : [
