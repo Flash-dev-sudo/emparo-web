@@ -5,7 +5,7 @@ import { useCart } from '@/hooks/use-cart';
 import { Button } from '@/components/ui/button';
 
 export default function MenuSection() {
-  const [activeCategory, setActiveCategory] = useState<MenuCategory>('all');
+  const [activeCategory, setActiveCategory] = useState<string>('all');
   const [filteredItems, setFilteredItems] = useState<MenuItem[]>([]);
   const { addToCart } = useCart();
 
@@ -77,12 +77,22 @@ export default function MenuSection() {
     ));
   };
 
-  const categories: { key: MenuCategory; label: string }[] = [
+  // Get unique categories from the actual menu data
+  const uniqueCategories: string[] = [];
+  if (menuItems) {
+    menuItems.forEach(item => {
+      if (!uniqueCategories.includes(item.category)) {
+        uniqueCategories.push(item.category);
+      }
+    });
+  }
+  
+  const categories: { key: string; label: string }[] = [
     { key: 'all', label: 'All Items' },
-    { key: 'chicken', label: 'Chicken' },
-    { key: 'burgers', label: 'Burgers' },
-    { key: 'sides', label: 'Sides' },
-    { key: 'drinks', label: 'Drinks' },
+    ...uniqueCategories.map(category => ({
+      key: category,
+      label: category
+    }))
   ];
 
   if (error) {
@@ -136,6 +146,14 @@ export default function MenuSection() {
               {label}
             </button>
           ))}
+        </div>
+
+        {/* Debug Info */}
+        <div className="mb-4 p-4 bg-gray-100 rounded-lg text-sm">
+          <p><strong>Total items loaded:</strong> {menuItems?.length || 0}</p>
+          <p><strong>Filtered items:</strong> {filteredItems.length}</p>
+          <p><strong>Active category:</strong> {activeCategory}</p>
+          <p><strong>Available categories:</strong> {uniqueCategories.join(', ')}</p>
         </div>
 
         {/* Loading State */}
