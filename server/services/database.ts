@@ -1,5 +1,6 @@
 import { createClient } from "@libsql/client";
 import { drizzle } from "drizzle-orm/libsql";
+import { eq } from "drizzle-orm";
 import { menuItems, type MenuItem } from "@shared/schema";
 
 const DATABASE_URL = process.env.DATABASE_URL || "libsql://emparo-periperi-flash.aws-eu-west-1.turso.io";
