@@ -60,10 +60,8 @@ export class DatabaseService {
 
   async updateMenuItem(id: number, data: { name?: string; price?: number; description?: string }): Promise<MenuItem> {
     try {
-      await client.execute({
-        sql: "UPDATE menu_items SET name = ?, price = ?, description = ? WHERE id = ?",
-        args: [data.name, data.price, data.description, id]
-      });
+      await client.execute("UPDATE menu_items SET name = ?, price = ?, description = ? WHERE id = ?", 
+        [data.name, data.price, data.description, id]);
       
       const result = await client.execute(`
         SELECT m.id, m.name, m.description, m.price, c.name as category
