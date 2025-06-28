@@ -26,6 +26,25 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Update menu item (for admin panel)
+  app.patch("/api/menu/:id", async (req, res) => {
+    try {
+      const { id } = req.params;
+      const { name, price, description } = req.body;
+      
+      const updatedItem = await databaseService.updateMenuItem(parseInt(id), {
+        name,
+        price: parseFloat(price),
+        description,
+      });
+      
+      res.json(updatedItem);
+    } catch (error) {
+      console.error("Error updating menu item:", error);
+      res.status(500).json({ error: "Failed to update menu item" });
+    }
+  });
+
   // Contact form submission (placeholder)
   app.post("/api/contact", async (req, res) => {
     try {

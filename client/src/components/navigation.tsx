@@ -78,6 +78,12 @@ export default function Navigation({ onCartToggle }: NavigationProps) {
             >
               Contact
             </button>
+            <a
+              href="/admin"
+              className="text-gray-500 hover:text-emparo-orange transition-colors duration-200 font-medium text-sm"
+            >
+              Admin
+            </a>
           </div>
 
           {/* Cart & Mobile Menu */}

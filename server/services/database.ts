@@ -3,8 +3,8 @@ import { drizzle } from "drizzle-orm/libsql";
 import { eq } from "drizzle-orm";
 import { menuItems, type MenuItem } from "@shared/schema";
 
-const DATABASE_URL = process.env.DATABASE_URL || "libsql://emparo-periperi-flash.aws-eu-west-1.turso.io";
-const DATABASE_AUTH_TOKEN = process.env.DATABASE_AUTH_TOKEN || "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhIjoicnciLCJpYXQiOjE3NTEwNTE2NjksImlkIjoiNGNiZGQ0MjctZmY2NS00YzZkLTlkY2QtNGMwYTEwODkzNTUwIiwicmlkIjoiNDYzOGQ5OTQtM2IzNS00NGQ3LWI3MTYtNTExYWMwZmRmMWYzIn0.4puL-wZhuvPDqvwQEk77Bl5BhsXppCEEscL8tHwhMwbndnsnExtJQHPoPt0uM2PwOsCQ_KoUNtVJADqvLZj5BQ";
+const DATABASE_URL = process.env.TILL_DATABASE_URL || "libsql://emparo-periperi-flash.aws-eu-west-1.turso.io";
+const DATABASE_AUTH_TOKEN = process.env.TILL_DATABASE_AUTH_TOKEN || "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhIjoicnciLCJpYXQiOjE3NTEwNTE2NjksImlkIjoiNGNiZGQ0MjctZmY2NS00YzZkLTlkY2QtNGMwYTEwODkzNTUwIiwicmlkIjoiNDYzOGQ5OTQtM2IzNS00NGQ3LWI3MTYtNTExYWMwZmRmMWYzIn0.4puL-wZhuvPDqvwQEk77Bl5BhsXppCEEscL8tHwhMwbndnsnExtJQHPoPt0uM2PwOsCQ_KoUNtVJADqvLZj5BQ";
 
 const client = createClient({
   url: DATABASE_URL,
@@ -31,6 +31,20 @@ export class DatabaseService {
     } catch (error) {
       console.error("Error fetching menu items by category:", error);
       throw new Error("Failed to fetch menu items by category");
+    }
+  }
+
+  async updateMenuItem(id: number, data: { name?: string; price?: number; description?: string }): Promise<MenuItem> {
+    try {
+      const [updatedItem] = await db
+        .update(menuItems)
+        .set(data)
+        .where(eq(menuItems.id, id))
+        .returning();
+      return updatedItem;
+    } catch (error) {
+      console.error("Error updating menu item:", error);
+      throw new Error("Failed to update menu item");
     }
   }
 }
