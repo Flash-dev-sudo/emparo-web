@@ -58,10 +58,11 @@ export default function MenuSection() {
   }, [menuItems, activeCategory]);
 
   const handleAddToCart = (item: MenuItem) => {
+    const correctedPrice = item.price > 50 ? item.price / 100 : item.price;
     addToCart({
       id: item.id,
       name: item.name,
-      price: item.price,
+      price: correctedPrice,
       image: getImageForCategory(item.category, item.id),
     });
   };
@@ -176,7 +177,7 @@ export default function MenuSection() {
                           {item.name}
                         </h3>
                         <span className="bg-emparo-orange text-white px-4 py-2 rounded-full text-lg font-bold flex-shrink-0">
-                          £{item.price.toFixed(2)}
+                          £{(item.price > 50 ? item.price / 100 : item.price).toFixed(2)}
                         </span>
                       </div>
                       <p className="text-gray-700 text-base leading-relaxed mb-4 max-w-3xl">
