@@ -16,8 +16,20 @@ const db = drizzle(client);
 export class DatabaseService {
   async getMenuItems(): Promise<MenuItem[]> {
     try {
-      const items = await db.select().from(menuItems);
-      return items;
+      const result = await client.execute(`
+        SELECT m.id, m.name, m.description, m.price, c.name as category
+        FROM menu_items m
+        JOIN categories c ON m.category_id = c.id
+        WHERE m.available = true
+      `);
+      
+      return result.rows.map(row => ({
+        id: row.id as number,
+        name: row.name as string,
+        description: row.description as string,
+        price: row.price as number,
+        category: row.category as string,
+      }));
     } catch (error) {
       console.error("Error fetching menu items:", error);
       throw new Error("Failed to fetch menu items");
@@ -26,8 +38,20 @@ export class DatabaseService {
 
   async getMenuItemsByCategory(category: string): Promise<MenuItem[]> {
     try {
-      const items = await db.select().from(menuItems).where(eq(menuItems.category, category));
-      return items;
+      const result = await client.execute(`
+        SELECT m.id, m.name, m.description, m.price, c.name as category
+        FROM menu_items m
+        JOIN categories c ON m.category_id = c.id
+        WHERE m.available = true AND c.name = ?
+      `, [category]);
+      
+      return result.rows.map(row => ({
+        id: row.id as number,
+        name: row.name as string,
+        description: row.description as string,
+        price: row.price as number,
+        category: row.category as string,
+      }));
     } catch (error) {
       console.error("Error fetching menu items by category:", error);
       throw new Error("Failed to fetch menu items by category");
@@ -36,12 +60,26 @@ export class DatabaseService {
 
   async updateMenuItem(id: number, data: { name?: string; price?: number; description?: string }): Promise<MenuItem> {
     try {
-      const [updatedItem] = await db
-        .update(menuItems)
-        .set(data)
-        .where(eq(menuItems.id, id))
-        .returning();
-      return updatedItem;
+      await client.execute({
+        sql: "UPDATE menu_items SET name = ?, price = ?, description = ? WHERE id = ?",
+        args: [data.name, data.price, data.description, id]
+      });
+      
+      const result = await client.execute(`
+        SELECT m.id, m.name, m.description, m.price, c.name as category
+        FROM menu_items m
+        JOIN categories c ON m.category_id = c.id
+        WHERE m.id = ?
+      `, [id]);
+      
+      const row = result.rows[0];
+      return {
+        id: row.id as number,
+        name: row.name as string,
+        description: row.description as string,
+        price: row.price as number,
+        category: row.category as string,
+      };
     } catch (error) {
       console.error("Error updating menu item:", error);
       throw new Error("Failed to update menu item");
