@@ -3,6 +3,7 @@ import Navigation from '@/components/navigation';
 import CartOverlay from '@/components/cart-overlay';
 import MenuSection from '@/components/menu-section';
 import Footer from '@/components/footer';
+import { Toaster } from '@/components/ui/toaster';
 
 export default function OrderPage() {
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -29,6 +30,7 @@ export default function OrderPage() {
 
       <MenuSection />
       <Footer />
+      <Toaster />
     </div>
   );
 }

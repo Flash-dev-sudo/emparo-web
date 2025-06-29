@@ -3,11 +3,13 @@ import { useQuery } from '@tanstack/react-query';
 import { MenuItem, MenuCategory } from '@/types/menu';
 import { useCart } from '@/hooks/use-cart';
 import { Button } from '@/components/ui/button';
+import { useToast } from '@/hooks/use-toast';
 
 export default function MenuSection() {
   const [activeCategory, setActiveCategory] = useState<string>('all');
   const [filteredItems, setFilteredItems] = useState<MenuItem[]>([]);
   const { addToCart } = useCart();
+  const { toast } = useToast();
 
   const getImageForCategory = (category: string, id: number) => {
     const imageMap: { [key: string]: string[] } = {
@@ -58,14 +60,18 @@ export default function MenuSection() {
   }, [menuItems, activeCategory]);
 
   const handleAddToCart = (item: MenuItem) => {
-    console.log('Adding item to cart:', item);
     addToCart({
       id: item.id,
       name: item.name,
       price: item.price,
       image: getImageForCategory(item.category, item.id),
     });
-    console.log('Item added to cart successfully');
+    
+    toast({
+      title: "Added to cart!",
+      description: `${item.name} has been added to your cart`,
+      duration: 2000,
+    });
   };
 
   const getHeatLevelIcons = (level: number | null) => {
