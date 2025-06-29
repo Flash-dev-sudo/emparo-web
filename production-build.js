@@ -1,29 +1,73 @@
 #!/usr/bin/env node
 
 import { execSync } from 'child_process';
-import { existsSync, mkdirSync, cpSync } from 'fs';
+import { existsSync, mkdirSync, cpSync, writeFileSync } from 'fs';
 import { join } from 'path';
 
 console.log('Starting production build...');
 
-// Run the standard build
-console.log('Building application...');
-execSync('npm run build', { stdio: 'inherit' });
+try {
+  // Run the standard build
+  console.log('Building application...');
+  execSync('npm run build', { stdio: 'inherit' });
 
-// Create server directory structure
-const serverDir = 'dist/server';
-if (!existsSync(serverDir)) {
-  mkdirSync(serverDir, { recursive: true });
-}
+  // Verify dist/index.js exists
+  if (!existsSync('dist/index.js')) {
+    console.error('✗ Server build failed - dist/index.js not found');
+    process.exit(1);
+  }
 
-// Copy public files to server directory for correct path resolution
-console.log('Setting up static file structure...');
-if (existsSync('dist/public')) {
+  // Verify dist/public exists
+  if (!existsSync('dist/public')) {
+    console.error('✗ Client build failed - dist/public not found');
+    process.exit(1);
+  }
+
+  // Create server directory structure for static file serving
+  const serverDir = 'dist/server';
+  if (!existsSync(serverDir)) {
+    mkdirSync(serverDir, { recursive: true });
+  }
+
+  // Copy public files to server directory for correct path resolution
+  console.log('Setting up static file structure...');
   cpSync('dist/public', join(serverDir, 'public'), { recursive: true });
   console.log('✓ Static files copied to server directory');
-} else {
-  console.error('✗ Public directory not found');
+
+  // Create a symlink fallback for additional path resolution
+  try {
+    execSync('ln -sf public dist/server/static', { stdio: 'pipe' });
+    console.log('✓ Created static file symlink');
+  } catch (e) {
+    console.log('ℹ Symlink creation skipped (not critical)');
+  }
+
+  // Verify final structure
+  const requiredFiles = [
+    'dist/index.js',
+    'dist/public/index.html',
+    'dist/server/public/index.html'
+  ];
+
+  let allFilesExist = true;
+  for (const file of requiredFiles) {
+    if (existsSync(file)) {
+      console.log(`✓ ${file} exists`);
+    } else {
+      console.log(`✗ ${file} missing`);
+      allFilesExist = false;
+    }
+  }
+
+  if (allFilesExist) {
+    console.log('✓ Production build completed successfully!');
+    process.exit(0);
+  } else {
+    console.error('✗ Production build verification failed');
+    process.exit(1);
+  }
+
+} catch (error) {
+  console.error('✗ Production build failed:', error.message);
   process.exit(1);
 }
-
-console.log('Production build completed successfully!');
