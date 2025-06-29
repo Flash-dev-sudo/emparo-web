@@ -40,67 +40,82 @@ export default function HeroSection() {
             </div>
 
             {/* Main Title */}
-            <div className="space-y-4">
-              <h1 className="text-7xl md:text-8xl lg:text-9xl font-black text-yellow-300 leading-none tracking-tight drop-shadow-lg">
+            <div className="space-y-6">
+              <h1 className="text-6xl md:text-7xl lg:text-8xl font-black text-yellow-300 leading-none tracking-tight drop-shadow-lg">
                 PERI<br/>PERI
               </h1>
-              <div className="w-24 h-2 bg-yellow-300 rounded-full"></div>
+              <div className="w-20 h-1 bg-yellow-300 rounded-full shadow-lg"></div>
+              <p className="text-white text-lg md:text-xl font-medium leading-relaxed max-w-md">
+                Authentic flame-grilled chicken & stone-baked specialties
+              </p>
             </div>
 
             {/* Main Content Card */}
-            <div className="bg-black/90 backdrop-blur-sm rounded-2xl p-8 border border-white/20 max-w-md">
-              <div className="space-y-6">
+            <div className="bg-black/95 backdrop-blur-sm rounded-3xl p-8 border border-white/10 max-w-lg shadow-2xl">
+              <div className="space-y-8">
                 <div>
-                  <h3 className="text-yellow-300 text-2xl font-bold mb-2">
+                  <h3 className="text-yellow-300 text-2xl md:text-3xl font-bold mb-4 leading-tight">
                     Authentic Grilled Chicken
                   </h3>
-                  <p className="text-gray-300 text-sm leading-relaxed">
-                    Authentic Grilled Chicken & Peri Peri Specialties
+                  <p className="text-gray-200 text-base leading-relaxed font-medium">
+                    Experience the authentic taste of flame-grilled peri peri chicken, 
+                    fresh stone-baked pizzas, and mouth-watering specialties.
                   </p>
                 </div>
                 
-                {/* Rating */}
-                <div className="flex items-center space-x-3">
-                  <div className="flex text-yellow-400">
-                    {[...Array(5)].map((_, i) => (
-                      <i key={i} className="fas fa-star text-sm"></i>
-                    ))}
+                {/* Location & Hours */}
+                <div className="space-y-4 pt-4 border-t border-white/10">
+                  <div className="flex items-start space-x-3">
+                    <i className="fas fa-map-marker-alt text-emparo-orange mt-1 text-lg"></i>
+                    <div>
+                      <p className="text-white font-semibold">Location</p>
+                      <p className="text-gray-300 text-sm">24 Blackstock Rd, Finsbury Park, N4 2DW</p>
+                    </div>
                   </div>
-                  <span className="text-white text-sm font-medium">4.9/5 Customer Rating</span>
+                  <div className="flex items-start space-x-3">
+                    <i className="fas fa-clock text-emparo-orange mt-1 text-lg"></i>
+                    <div>
+                      <p className="text-white font-semibold">Hours</p>
+                      <p className="text-gray-300 text-sm">Daily 1:00 PM - 4:00 AM</p>
+                    </div>
+                  </div>
                 </div>
 
                 {/* Features */}
-                <div className="space-y-2 text-sm text-gray-300">
-                  <div className="flex items-center space-x-2">
-                    <i className="fas fa-fire text-emparo-orange"></i>
-                    <span>Flame-grilled to perfection</span>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <i className="fas fa-clock text-emparo-orange"></i>
-                    <span>24-hour marinated chicken</span>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <i className="fas fa-pepper-hot text-emparo-orange"></i>
-                    <span>Signature peri peri spices</span>
+                <div className="space-y-3 pt-4 border-t border-white/10">
+                  <h4 className="text-white font-semibold mb-3">Our Specialties</h4>
+                  <div className="space-y-3">
+                    <div className="flex items-center space-x-3">
+                      <i className="fas fa-fire text-emparo-orange w-5"></i>
+                      <span className="text-gray-200">Flame-grilled to perfection</span>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <i className="fas fa-drumstick-bite text-emparo-orange w-5"></i>
+                      <span className="text-gray-200">24-hour marinated chicken</span>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <i className="fas fa-pepper-hot text-emparo-orange w-5"></i>
+                      <span className="text-gray-200">Signature peri peri spices</span>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-6">
               <a
                 href="/order"
-                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 shadow-xl flex items-center justify-center space-x-2 transform hover:scale-105"
+                className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-10 py-5 rounded-2xl text-lg font-bold transition-all duration-300 shadow-2xl flex items-center justify-center space-x-3 transform hover:scale-105 hover:shadow-3xl border border-blue-500/20"
               >
-                <i className="fas fa-utensils"></i>
+                <i className="fas fa-utensils text-xl"></i>
                 <span>View Our Menu</span>
               </a>
               <a
                 href="tel:02034416940"
-                className="bg-yellow-500 hover:bg-yellow-400 text-black px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 shadow-xl flex items-center justify-center space-x-2 transform hover:scale-105"
+                className="bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-400 hover:to-orange-400 text-black px-10 py-5 rounded-2xl text-lg font-bold transition-all duration-300 shadow-2xl flex items-center justify-center space-x-3 transform hover:scale-105 hover:shadow-3xl border border-yellow-400/30"
               >
-                <i className="fas fa-phone"></i>
+                <i className="fas fa-phone text-xl"></i>
                 <span>020 3441 6940</span>
               </a>
             </div>
@@ -112,17 +127,17 @@ export default function HeroSection() {
             <div className="relative z-10">
               <div className="w-full max-w-lg mx-auto">
                 <div className="relative group">
-                  <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-3xl blur-lg opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
-                  <div className="relative bg-black rounded-3xl overflow-hidden shadow-2xl border-4 border-white/20">
+                  <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-3xl blur-xl opacity-30 group-hover:opacity-50 transition-all duration-500"></div>
+                  <div className="relative bg-gradient-to-br from-gray-900 to-black rounded-3xl overflow-hidden shadow-2xl border border-white/20 backdrop-blur-sm">
                     <img
                       src={chickenImage}
                       alt="Authentic Emparo grilled chicken"
-                      className="w-full h-80 md:h-96 object-cover"
+                      className="w-full h-80 md:h-96 object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                    <div className="absolute bottom-4 left-4 right-4">
-                      <h4 className="text-white text-xl font-bold">Signature Grilled Chicken</h4>
-                      <p className="text-gray-300 text-sm">Marinated in authentic peri peri spices</p>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                    <div className="absolute bottom-6 left-6 right-6">
+                      <h4 className="text-white text-xl md:text-2xl font-bold mb-2 leading-tight">Signature Grilled Chicken</h4>
+                      <p className="text-gray-300 text-sm leading-relaxed">Marinated in authentic peri peri spices for 24 hours</p>
                     </div>
                   </div>
                 </div>
@@ -130,37 +145,39 @@ export default function HeroSection() {
             </div>
 
             {/* Secondary images */}
-            <div className="grid grid-cols-2 gap-4 mt-6 px-8">
+            <div className="grid grid-cols-2 gap-6 mt-8 px-4">
               <div className="relative group">
-                <div className="bg-black rounded-2xl overflow-hidden shadow-lg border-2 border-white/10">
+                <div className="bg-gradient-to-br from-gray-900 to-black rounded-2xl overflow-hidden shadow-xl border border-white/10 transform hover:scale-105 transition-all duration-300">
                   <img
                     src={pizzaImage}
                     alt="Stone-baked pizza"
-                    className="w-full h-32 object-cover"
+                    className="w-full h-36 object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-                  <div className="absolute bottom-2 left-2">
-                    <p className="text-white text-sm font-semibold">Stone-Baked Pizza</p>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                  <div className="absolute bottom-3 left-3 right-3">
+                    <p className="text-white text-sm font-bold">Stone-Baked Pizza</p>
+                    <p className="text-gray-400 text-xs">Fresh ingredients daily</p>
                   </div>
                 </div>
               </div>
               <div className="relative group">
-                <div className="bg-black rounded-2xl overflow-hidden shadow-lg border-2 border-white/10">
+                <div className="bg-gradient-to-br from-gray-900 to-black rounded-2xl overflow-hidden shadow-xl border border-white/10 transform hover:scale-105 transition-all duration-300">
                   <img
                     src={grilledChickenImage}
                     alt="Peri peri specialties"
-                    className="w-full h-32 object-cover"
+                    className="w-full h-36 object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-                  <div className="absolute bottom-2 left-2">
-                    <p className="text-white text-sm font-semibold">Fresh Specialties</p>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                  <div className="absolute bottom-3 left-3 right-3">
+                    <p className="text-white text-sm font-bold">Fresh Specialties</p>
+                    <p className="text-gray-400 text-xs">Grilled to perfection</p>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Floating rooster logo */}
-            <div className="absolute top-4 right-4 w-16 h-16 bg-emparo-orange rounded-full flex items-center justify-center shadow-2xl z-20 animate-pulse">
+            <div className="absolute top-6 right-6 w-16 h-16 bg-gradient-to-br from-emparo-orange to-red-600 rounded-full flex items-center justify-center shadow-2xl z-20 border-2 border-white/20">
               <RoosterLogo className="text-white" size={32} />
             </div>
           </div>
