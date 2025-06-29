@@ -127,10 +127,10 @@ export default function MenuSection() {
           <div className="inline-flex items-center justify-center w-16 h-16 bg-emparo-orange rounded-full mb-6">
             <i className="fas fa-fire text-white text-2xl"></i>
           </div>
-          <h2 className="font-bold text-4xl md:text-5xl text-emparo-black mb-4">
+          <h2 className="font-bold text-4xl md:text-5xl text-gray-900 mb-4">
             Our Menu
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-800 max-w-2xl mx-auto font-medium">
             Discover our flame-grilled specialties, each crafted with authentic peri peri spices
           </p>
         </div>
@@ -180,25 +180,25 @@ export default function MenuSection() {
                     {/* Left Content */}
                     <div className="flex-1">
                       <div className="flex items-start justify-between mb-2">
-                        <h3 className="font-bold text-2xl text-emparo-black leading-tight pr-4">
+                        <h3 className="font-bold text-2xl text-gray-900 leading-tight pr-4">
                           {item.name}
                         </h3>
                         <span className="bg-emparo-orange text-white px-4 py-2 rounded-full text-lg font-bold flex-shrink-0">
                           £{item.price.toFixed(2)}
                         </span>
                       </div>
-                      <p className="text-gray-700 text-base leading-relaxed mb-4 max-w-3xl">
+                      <p className="text-gray-800 text-base leading-relaxed mb-4 max-w-3xl font-medium">
                         {item.description}
                       </p>
                       <div className="flex items-center gap-4">
-                        <span className="text-sm font-medium text-gray-600 bg-gray-100 px-3 py-1 rounded-full">
+                        <span className="text-sm font-semibold text-gray-700 bg-gray-200 px-3 py-1 rounded-full">
                           {item.category}
                         </span>
                         <div className="flex items-center gap-1">
                           {Array.from({ length: Math.min(item.heatLevel || 1, 5) }, (_, i) => (
                             <i key={i} className="fas fa-fire text-sm text-emparo-orange"></i>
                           ))}
-                          <span className="text-sm text-gray-600 ml-1 font-medium">
+                          <span className="text-sm text-gray-800 ml-1 font-semibold">
                             {(item.heatLevel || 1) === 1 && 'Mild'}
                             {(item.heatLevel || 1) === 2 && 'Medium'}
                             {(item.heatLevel || 1) === 3 && 'Hot'}

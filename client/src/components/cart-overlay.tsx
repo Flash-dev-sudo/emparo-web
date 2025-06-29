@@ -9,8 +9,6 @@ interface CartOverlayProps {
 export default function CartOverlay({ isOpen, onClose }: CartOverlayProps) {
   const { cart, updateQuantity, removeFromCart, getTotalPrice } = useCart();
 
-  console.log('CartOverlay: cart state:', cart);
-
   if (!isOpen) return null;
 
   return (
