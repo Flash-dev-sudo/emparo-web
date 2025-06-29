@@ -6,110 +6,60 @@
  */
 
 import { execSync } from 'child_process';
-import { existsSync, mkdirSync, cpSync, writeFileSync } from 'fs';
-import { join, dirname } from 'path';
-import { fileURLToPath } from 'url';
+import { existsSync, mkdirSync, copyFileSync, cpSync, writeFileSync } from 'fs';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-console.log('🚀 Starting robust production build...');
+console.log('Building Emparo application for production...');
 
 try {
-  // Ensure we're in the project root
-  process.chdir(__dirname);
+  // Run the standard build process
+  console.log('Running frontend build...');
+  execSync('vite build', { stdio: 'inherit' });
   
-  console.log('📦 Installing dependencies...');
-  execSync('npm install', { stdio: 'inherit' });
+  console.log('Running server build...');
+  execSync('esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist', { stdio: 'inherit' });
   
-  console.log('🔨 Building application...');
-  execSync('npm run build', { stdio: 'inherit' });
+  // Create Render's expected directory structure
+  console.log('Creating Render deployment structure...');
   
-  // Verify core build files exist
-  const requiredFiles = ['dist/index.js', 'dist/public/index.html'];
-  for (const file of requiredFiles) {
-    if (!existsSync(file)) {
-      throw new Error(`Critical build file missing: ${file}`);
-    }
+  if (!existsSync('src')) {
+    mkdirSync('src', { recursive: true });
+  }
+  if (!existsSync('src/dist')) {
+    mkdirSync('src/dist', { recursive: true });
   }
   
-  console.log('📁 Setting up production file structure...');
-  
-  // Create multiple fallback directory structures for maximum compatibility
-  const structures = [
-    'dist/server',
-    'dist/src',
-    'src/dist'
-  ];
-  
-  for (const dir of structures) {
-    if (!existsSync(dir)) {
-      mkdirSync(dir, { recursive: true });
-    }
-    
-    // Copy public files to each structure
-    const publicTarget = join(dir, 'public');
-    if (existsSync('dist/public')) {
-      cpSync('dist/public', publicTarget, { recursive: true });
-      console.log(`✓ Static files copied to ${publicTarget}`);
-    }
-    
-    // Copy server file to each structure
-    const serverTarget = join(dir, 'index.js');
-    if (existsSync('dist/index.js')) {
-      cpSync('dist/index.js', serverTarget);
-      console.log(`✓ Server file copied to ${serverTarget}`);
-    }
+  // Copy server file to expected location
+  if (existsSync('dist/index.js')) {
+    copyFileSync('dist/index.js', 'src/dist/index.js');
+    console.log('✓ Server file copied to src/dist/index.js');
   }
   
-  // Create symlinks for additional path resolution
-  const symlinkTargets = [
-    { from: 'dist', to: 'src/dist' },
-    { from: '../dist', to: 'dist/server/dist' },
-    { from: 'dist/index.js', to: 'index.js' }
-  ];
-  
-  for (const { from, to } of symlinkTargets) {
-    try {
-      if (!existsSync(to)) {
-        execSync(`ln -sf ${from} ${to}`, { stdio: 'pipe' });
-        console.log(`✓ Created symlink: ${to} -> ${from}`);
-      }
-    } catch (e) {
-      // Symlinks are fallback, not critical
-      console.log(`ℹ Symlink skipped: ${to}`);
-    }
+  // Copy static files
+  if (existsSync('dist/public')) {
+    cpSync('dist/public', 'src/dist/public', { recursive: true });
+    console.log('✓ Static files copied to src/dist/public');
   }
   
-  // Final verification
-  const verificationPaths = [
-    'dist/index.js',
-    'dist/public/index.html',
-    'dist/server/index.js',
-    'dist/server/public/index.html',
-    'src/dist/index.js',
-    'src/dist/public/index.html'
-  ];
+  // Create a start script that works with the actual file locations
+  const startScript = `#!/usr/bin/env node
+process.env.NODE_ENV = 'production';
+import('./src/dist/index.js').catch(() => {
+  // Fallback to original location if src/dist doesn't exist
+  import('./dist/index.js').catch(err => {
+    console.error('Cannot find server file:', err.message);
+    process.exit(1);
+  });
+});`;
   
-  let verified = 0;
-  for (const path of verificationPaths) {
-    if (existsSync(path)) {
-      console.log(`✓ ${path}`);
-      verified++;
-    } else {
-      console.log(`✗ ${path}`);
-    }
-  }
+  writeFileSync('production-start.js', startScript);
+  console.log('✓ Created production-start.js');
   
-  if (verified >= 4) { // At least 4 critical paths must exist
-    console.log(`🎉 Production build completed successfully! (${verified}/${verificationPaths.length} paths verified)`);
-    process.exit(0);
-  } else {
-    throw new Error(`Build verification failed: only ${verified}/${verificationPaths.length} paths verified`);
-  }
+  console.log('✓ Build completed successfully');
+  console.log('Files ready for Render deployment:');
+  console.log('  - src/dist/index.js (server)');
+  console.log('  - src/dist/public/ (static files)');
   
 } catch (error) {
-  console.error('❌ Production build failed:', error.message);
-  console.error('Stack trace:', error.stack);
+  console.error('Build failed:', error.message);
   process.exit(1);
 }

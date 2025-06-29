@@ -7,17 +7,23 @@
 
 import { existsSync, mkdirSync, copyFileSync, cpSync } from 'fs';
 import { execSync } from 'child_process';
+import { spawn } from 'child_process';
 
-console.log('Deployment interceptor: Ensuring proper server setup...');
+console.log('🚀 Emparo server starting...');
 
 async function setupDeployment() {
   try {
-    // Ensure build exists
+    // Set production environment
+    process.env.NODE_ENV = 'production';
+    
+    console.log('Setting up deployment structure for Render...');
+    
+    // Build the application if needed
     if (!existsSync('dist/index.js')) {
-      console.log('Running build process...');
+      console.log('Building application...');
       execSync('npm run build', { stdio: 'inherit' });
     }
-
+    
     // Create the directory structure Render expects
     if (!existsSync('src')) {
       mkdirSync('src', { recursive: true });
@@ -25,38 +31,43 @@ async function setupDeployment() {
     if (!existsSync('src/dist')) {
       mkdirSync('src/dist', { recursive: true });
     }
-
-    // Copy server file to expected location
-    if (existsSync('dist/index.js') && !existsSync('src/dist/index.js')) {
+    
+    // Copy server file to the exact location Render expects
+    if (existsSync('dist/index.js')) {
       copyFileSync('dist/index.js', 'src/dist/index.js');
-      console.log('Server file copied to src/dist/index.js');
+      console.log('✓ Server copied to src/dist/index.js');
+    } else {
+      throw new Error('Server build file not found');
     }
-
+    
     // Copy static files
-    if (existsSync('dist/public') && !existsSync('src/dist/public')) {
+    if (existsSync('dist/public')) {
       cpSync('dist/public', 'src/dist/public', { recursive: true });
-      console.log('Static files copied to src/dist/public');
+      console.log('✓ Static files copied to src/dist/public');
     }
-
-    // Import and start the actual server
-    const { default: server } = await import('./src/dist/index.js');
+    
+    // Start the server from the correct location
+    console.log('Starting server from src/dist/index.js...');
+    const server = spawn('node', ['src/dist/index.js'], {
+      stdio: 'inherit',
+      env: process.env,
+      cwd: process.cwd()
+    });
+    
+    server.on('close', (code) => {
+      console.log(`Server exited with code: ${code}`);
+      process.exit(code);
+    });
+    
+    server.on('error', (error) => {
+      console.error('Server startup failed:', error);
+      process.exit(1);
+    });
     
   } catch (error) {
     console.error('Deployment setup failed:', error.message);
-    
-    // Fallback: try to start from original location
-    try {
-      console.log('Attempting fallback startup...');
-      const { default: server } = await import('./dist/index.js');
-    } catch (fallbackError) {
-      console.error('All startup attempts failed:', fallbackError.message);
-      process.exit(1);
-    }
+    process.exit(1);
   }
 }
 
-// Set production environment
-process.env.NODE_ENV = 'production';
-
-// Run the deployment setup
 setupDeployment();
