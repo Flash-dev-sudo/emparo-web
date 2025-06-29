@@ -3,8 +3,10 @@ services:
     name: emparo-peri-peri
     env: node
     plan: free
-    buildCommand: npm install && npm run build && mkdir -p src && ln -sf ../dist src/dist
+    buildCommand: npm install && npm run build
     startCommand: node dist/index.js
     envVars:
       - key: NODE_ENV
         value: production
+      - key: DATABASE_URL
+        sync: false
