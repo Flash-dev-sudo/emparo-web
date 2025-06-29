@@ -3,8 +3,8 @@ services:
     name: emparo-peri-peri
     env: node
     plan: free
-    buildCommand: npm install && node deploy.js
-    startCommand: node src/dist/index.js
+    buildCommand: npm install && node quick-deploy.js
+    startCommand: node start.js
     envVars:
       - key: NODE_ENV
         value: production

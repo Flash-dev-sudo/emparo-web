@@ -1,17 +1,22 @@
 #!/usr/bin/env node
 
 /**
- * Simple, robust deployment script for Render
- * Addresses the core path resolution issue
+ * Comprehensive deployment script for Render
+ * Creates files in all possible expected locations
  */
 
 import { execSync } from 'child_process';
-import { existsSync, mkdirSync, copyFileSync, cpSync } from 'fs';
+import { existsSync, mkdirSync, copyFileSync, cpSync, writeFileSync } from 'fs';
 
-console.log('Starting deployment build...');
+console.log('Starting comprehensive deployment build...');
 
 try {
+  // Install dependencies first
+  console.log('Installing dependencies...');
+  execSync('npm install', { stdio: 'inherit' });
+  
   // Build the application
+  console.log('Building application...');
   execSync('npm run build', { stdio: 'inherit' });
   
   // Verify build completed
@@ -19,24 +24,66 @@ try {
     throw new Error('Build failed - missing dist files');
   }
   
-  // Create the specific directory structure Render expects
-  // Based on the error: /opt/render/project/src/dist/index.js
-  mkdirSync('src', { recursive: true });
-  mkdirSync('src/dist', { recursive: true });
-  mkdirSync('src/dist/server', { recursive: true });
+  console.log('Creating deployment structure...');
   
-  // Copy server file to expected location
-  copyFileSync('dist/index.js', 'src/dist/index.js');
+  // Create all possible directory structures
+  const directories = [
+    'src/dist',
+    'src/dist/server', 
+    'dist/server',
+    'project/src/dist'
+  ];
   
-  // Copy static files
-  cpSync('dist/public', 'src/dist/public', { recursive: true });
-  cpSync('dist/public', 'src/dist/server/public', { recursive: true });
+  for (const dir of directories) {
+    mkdirSync(dir, { recursive: true });
+  }
   
-  console.log('Deployment structure created successfully');
-  console.log('Files available at:');
-  console.log('- src/dist/index.js');
-  console.log('- src/dist/public/');
-  console.log('- src/dist/server/public/');
+  // Copy server files to all expected locations
+  const serverTargets = [
+    'src/dist/index.js',      // Primary Render expected location
+    'dist/server/index.js',   // Alternative location
+    'project/src/dist/index.js' // Deep fallback
+  ];
+  
+  for (const target of serverTargets) {
+    try {
+      copyFileSync('dist/index.js', target);
+      console.log(`✓ Server copied to: ${target}`);
+    } catch (e) {
+      console.log(`⚠ Failed to copy server to: ${target}`);
+    }
+  }
+  
+  // Copy static files to all expected locations  
+  const publicTargets = [
+    'src/dist/public',
+    'src/dist/server/public',
+    'dist/server/public',
+    'project/src/dist/public'
+  ];
+  
+  for (const target of publicTargets) {
+    try {
+      cpSync('dist/public', target, { recursive: true });
+      console.log(`✓ Static files copied to: ${target}`);
+    } catch (e) {
+      console.log(`⚠ Failed to copy static files to: ${target}`);
+    }
+  }
+  
+  // Create a deployment manifest
+  const manifest = {
+    buildTime: new Date().toISOString(),
+    serverFiles: serverTargets.filter(existsSync),
+    publicDirs: publicTargets.filter(existsSync),
+    deploymentReady: true
+  };
+  
+  writeFileSync('deployment-manifest.json', JSON.stringify(manifest, null, 2));
+  
+  console.log('Deployment completed successfully!');
+  console.log(`Server files available at: ${manifest.serverFiles.length} locations`);
+  console.log(`Static files available at: ${manifest.publicDirs.length} locations`);
   
 } catch (error) {
   console.error('Deployment build failed:', error.message);
