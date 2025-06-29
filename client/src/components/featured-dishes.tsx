@@ -82,13 +82,13 @@ export default function FeaturedDishes() {
                 <RoosterLogo className="text-emparo-orange" size={24} />
               </div>
               
-              <h2 className="font-bold text-3xl md:text-4xl mb-4 leading-tight">
+              <h2 className="on-orange-bg text-3xl md:text-4xl mb-4 leading-tight">
                 {featuredItems[0].title}
               </h2>
-              <p className="text-xl mb-6 text-orange-100 leading-relaxed">
+              <p className="on-orange-bg text-xl mb-6 leading-relaxed">
                 {featuredItems[0].subtitle}
               </p>
-              <p className="text-orange-100 mb-8 leading-relaxed text-lg">
+              <p className="on-orange-bg-light mb-8 leading-relaxed text-lg">
                 {featuredItems[0].description}
               </p>
               
