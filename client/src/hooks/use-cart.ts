@@ -22,16 +22,24 @@ export function useCart() {
   }, [cart]);
 
   const addToCart = (item: Omit<CartItem, 'quantity'>) => {
+    console.log('useCart: Adding item to cart', item);
     setCart(prevCart => {
+      console.log('useCart: Current cart before adding:', prevCart);
       const existingItem = prevCart.find(cartItem => cartItem.id === item.id);
       if (existingItem) {
-        return prevCart.map(cartItem =>
+        console.log('useCart: Item exists, updating quantity');
+        const newCart = prevCart.map(cartItem =>
           cartItem.id === item.id
             ? { ...cartItem, quantity: cartItem.quantity + 1 }
             : cartItem
         );
+        console.log('useCart: New cart after update:', newCart);
+        return newCart;
       } else {
-        return [...prevCart, { ...item, quantity: 1 }];
+        console.log('useCart: Adding new item to cart');
+        const newCart = [...prevCart, { ...item, quantity: 1 }];
+        console.log('useCart: New cart after adding:', newCart);
+        return newCart;
       }
     });
   };

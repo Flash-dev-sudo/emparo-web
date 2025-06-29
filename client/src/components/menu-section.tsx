@@ -58,12 +58,14 @@ export default function MenuSection() {
   }, [menuItems, activeCategory]);
 
   const handleAddToCart = (item: MenuItem) => {
+    console.log('Adding item to cart:', item);
     addToCart({
       id: item.id,
       name: item.name,
       price: item.price,
       image: getImageForCategory(item.category, item.id),
     });
+    console.log('Item added to cart successfully');
   };
 
   const getHeatLevelIcons = (level: number | null) => {
