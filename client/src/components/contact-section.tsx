@@ -103,7 +103,7 @@ export default function ContactSection() {
           <h2 className="font-bold text-4xl md:text-5xl text-emparo-black mb-4">
             Visit <span className="text-emparo-orange">Us</span>
           </h2>
-          <p className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-800 max-w-3xl mx-auto leading-relaxed font-medium">
             Experience authentic peri peri at our Finsbury Park location. 
             <br className="hidden md:block" />
             Call ahead for reservations or visit us for late-night dining.

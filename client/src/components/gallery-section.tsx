@@ -53,7 +53,7 @@ export default function GallerySection() {
           <h2 className="font-bold text-4xl md:text-5xl text-emparo-black mb-4">
             Gallery
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-800 max-w-2xl mx-auto font-medium leading-relaxed">
             A visual feast of our flame-grilled creations
           </p>
         </div>
