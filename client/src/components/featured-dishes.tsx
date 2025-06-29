@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { type MenuItem } from '@/types/menu';
+import RoosterLogo from './rooster-logo';
 
 export default function FeaturedDishes() {
   const { data: menuItems, isLoading } = useQuery<MenuItem[]>({
@@ -26,7 +27,7 @@ export default function FeaturedDishes() {
       subtitle: "Flame-grilled perfection marinated for 24 hours",
       description: "Experience the authentic taste of flame-grilled peri peri chicken, marinated for twenty-four hours, steam cooked, and grilled to order. This is the secret behind our signature dishes.",
       image: "/images/ChatGPT Image May 22, 2025, 07_35_09 PM.png",
-      rating: "4.9/5 Customer Rating"
+
     },
     {
       id: 2,
@@ -75,17 +76,10 @@ export default function FeaturedDishes() {
         <div className="bg-gradient-to-r from-emparo-orange to-orange-600 rounded-3xl overflow-hidden mb-16 relative">
           <div className="grid grid-cols-1 lg:grid-cols-2 items-center min-h-[500px]">
             <div className="p-8 lg:p-12 text-white">
-              <div className="flex items-center mb-4">
-                <div className="flex text-yellow-300 mr-3">
-                  {[1,2,3,4,5].map(star => (
-                    <i key={star} className="fas fa-star"></i>
-                  ))}
-                </div>
-                <span className="text-orange-100">{featuredItems[0].rating}</span>
-              </div>
+
               
               <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mb-6">
-                <i className="fas fa-kiwi-bird text-emparo-orange text-xl"></i>
+                <RoosterLogo className="text-emparo-orange" size={24} />
               </div>
               
               <h2 className="font-bold text-3xl md:text-4xl mb-4 leading-tight">
