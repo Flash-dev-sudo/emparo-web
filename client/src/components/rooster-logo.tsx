@@ -13,36 +13,34 @@ export default function RoosterLogo({ className = "", size = 24 }: RoosterLogoPr
       className={className}
       xmlns="http://www.w3.org/2000/svg"
     >
-      {/* Flame-like rooster silhouette inspired by Emparo's logo */}
+      {/* Simplified rooster silhouette inspired by Emparo logo */}
       <path
-        d="M50 10C55 8 60 12 62 18C64 15 68 16 70 20C72 18 76 20 78 25C80 22 84 25 85 30C82 35 85 40 82 45C78 50 80 55 75 60C70 65 72 70 65 75C60 80 55 75 50 80C45 75 40 80 35 75C28 70 30 65 25 60C20 55 22 50 18 45C15 40 18 35 15 30C16 25 20 22 22 25C24 20 28 18 30 20C32 16 36 15 38 18C40 12 45 8 50 10Z"
+        d="M25 80C20 75 18 65 22 58C26 50 35 45 42 40C48 35 52 25 58 20C62 16 68 15 72 18C75 22 78 28 80 35C82 42 80 48 76 52C72 56 66 58 60 60C58 62 56 65 52 68C48 72 45 77 42 82C40 86 37 88 33 87C30 86 28 83 26 80ZM60 25C65 20 70 22 72 28C74 34 72 40 68 44C64 48 58 50 52 48C48 46 46 42 48 38C50 34 55 30 60 25Z"
         fill="currentColor"
-        opacity="0.9"
       />
       
-      {/* Inner flame details */}
+      {/* Flame-like tail feathers */}
       <path
-        d="M50 20C52 18 55 22 57 25C59 22 62 24 64 28C66 25 69 28 70 32C67 36 69 40 66 44C62 48 64 52 59 56C54 60 56 64 50 68C44 64 46 60 41 56C36 52 38 48 34 44C31 40 33 36 30 32C31 28 34 25 36 28C38 24 41 22 43 25C45 22 48 18 50 20Z"
+        d="M75 35C78 30 82 28 86 32C88 36 87 42 84 46C81 50 76 52 72 50C70 48 70 44 72 40C74 36 75 35 75 35Z"
+        fill="currentColor"
+        opacity="0.8"
+      />
+      
+      {/* Body detail */}
+      <path
+        d="M35 60C40 55 46 52 52 55C56 58 58 63 55 68C52 72 46 74 40 72C36 70 34 65 35 60Z"
         fill="currentColor"
         opacity="0.7"
       />
       
-      {/* Center flame */}
-      <path
-        d="M50 30C51 28 53 30 54 32C55 30 57 31 58 34C59 32 61 34 62 36C60 38 61 40 59 42C57 44 58 46 55 48C52 50 53 52 50 54C47 52 48 50 45 48C42 46 43 44 41 42C39 40 40 38 38 36C39 34 41 32 42 34C43 31 45 30 46 32C47 30 49 28 50 30Z"
-        fill="currentColor"
-        opacity="0.5"
-      />
+      {/* Eye */}
+      <circle cx="62" cy="35" r="2" fill="white" />
+      <circle cx="62" cy="35" r="1" fill="currentColor" />
       
-      {/* Rooster eye */}
-      <circle cx="58" cy="35" r="2" fill="white" opacity="0.8" />
-      <circle cx="58" cy="35" r="1" fill="currentColor" />
-      
-      {/* Subtle beak indication */}
+      {/* Beak */}
       <path
-        d="M65 38L68 36L67 40Z"
-        fill="currentColor"
-        opacity="0.6"
+        d="M70 36L75 34L73 39L70 40Z"
+        fill="#F59E0B"
       />
     </svg>
   );

@@ -98,6 +98,19 @@ The application is structured for deployment on Render with the following consid
 
 ## Recent Changes
 
+### June 29, 2025 - Authentic Logo Design & Hero Section Redesign
+- Created custom SVG rooster logo inspired by authentic Emparo storefront branding
+- Replaced placeholder kiwi-bird icons with flame-like rooster silhouette throughout site
+- Updated logo in navigation header, hero section, and footer components
+- Completely redesigned hero section to match reference design with:
+  - Orange gradient background matching brand colors
+  - Large "PERI PERI" typography in yellow
+  - Two-column layout with content cards and chicken image
+  - Black content cards with rounded corners and authentic restaurant info
+  - Customer rating display and call-to-action buttons
+  - Rooster logo integration in strategic positions
+- Enhanced visual consistency with authentic restaurant branding
+
 ### June 27, 2025 - Major Architecture Update
 - Separated aesthetic home page from ordering functionality
 - Added dedicated `/order` page for menu browsing and cart functionality
