@@ -9,6 +9,8 @@ export default function Navigation({ onCartToggle }: NavigationProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { getTotalItems } = useCart();
+  
+  console.log('Navigation: Total items in cart:', getTotalItems());
 
   useEffect(() => {
     const handleScroll = () => {
