@@ -98,6 +98,15 @@ The application is structured for deployment on Render with the following consid
 
 ## Recent Changes
 
+### June 29, 2025 - Deployment Configuration & Text Readability Enhancement
+- Fixed deployment path issue on Render with comprehensive build configuration
+- Created render.yaml with symlink solution for path resolution problems
+- Added build verification scripts and deployment utilities
+- Enhanced text readability throughout website with improved contrast and typography
+- Updated font weights from light to medium/bold for better visibility
+- Applied high-contrast text with shadows on colored backgrounds
+- Improved text colors from light gray to darker shades for better readability
+
 ### June 29, 2025 - Authentic Logo Design & Hero Section Redesign
 - Created custom SVG rooster logo inspired by authentic Emparo storefront branding
 - Replaced placeholder kiwi-bird icons with flame-like rooster silhouette throughout site
