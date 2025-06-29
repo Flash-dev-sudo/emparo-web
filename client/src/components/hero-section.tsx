@@ -1,3 +1,5 @@
+import RoosterLogo from './rooster-logo';
+
 export default function HeroSection() {
   const scrollToFeatured = () => {
     const element = document.getElementById('featured');
@@ -34,7 +36,7 @@ export default function HeroSection() {
         {/* Rooster Logo */}
         <div className="mb-8 animate-bounce-gentle">
           <div className="w-24 h-24 mx-auto bg-emparo-orange rounded-full flex items-center justify-center shadow-2xl mb-6">
-            <i className="fas fa-kiwi-bird text-white text-4xl"></i>
+            <RoosterLogo className="text-white" size={48} />
           </div>
         </div>
 

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useCart } from '@/hooks/use-cart';
+import RoosterLogo from './rooster-logo';
 
 interface NavigationProps {
   onCartToggle: () => void;
@@ -40,7 +41,7 @@ export default function Navigation({ onCartToggle }: NavigationProps) {
           {/* Logo Section */}
           <div className="flex items-center space-x-3">
             <div className="w-12 h-12 bg-emparo-orange rounded-full flex items-center justify-center shadow-lg">
-              <i className="fas fa-kiwi-bird text-white text-xl"></i>
+              <RoosterLogo className="text-white" size={24} />
             </div>
             <div>
               <h1 className="font-bold text-xl text-emparo-black">Emparo</h1>
