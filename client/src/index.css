@@ -1,0 +1,200 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(15, 15%, 4%);
+  --muted: hsl(60, 5%, 96%);
+  --muted-foreground: hsl(25, 5%, 45%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(15, 15%, 4%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(15, 15%, 4%);
+  --border: hsl(20, 6%, 90%);
+  --input: hsl(20, 6%, 90%);
+  --primary: hsl(23, 95%, 53%);
+  --primary-foreground: hsl(0, 0%, 100%);
+  --secondary: hsl(60, 5%, 96%);
+  --secondary-foreground: hsl(24, 10%, 10%);
+  --accent: hsl(60, 5%, 96%);
+  --accent-foreground: hsl(24, 10%, 10%);
+  --destructive: hsl(0, 84%, 60%);
+  --destructive-foreground: hsl(60, 9%, 98%);
+  --ring: hsl(15, 15%, 4%);
+  --radius: 0.5rem;
+  
+  /* Custom Emparo Colors */
+  --emparo-orange: hsl(23, 95%, 53%);
+  --emparo-black: hsl(0, 0%, 6%);
+  --emparo-white: hsl(0, 0%, 100%);
+  
+  /* Text Readability Improvements */
+  --text-high-contrast: hsl(0, 0%, 100%);
+  --text-medium-contrast: hsl(0, 0%, 95%);
+  --text-low-contrast: hsl(0, 0%, 85%);
+}
+
+/* Enhanced Text Readability Classes */
+.text-readable-white {
+  color: hsl(0, 0%, 100%) !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+  font-weight: 600;
+}
+
+.text-readable-light {
+  color: hsl(0, 0%, 95%) !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+  font-weight: 500;
+}
+
+.text-readable-dark {
+  color: hsl(0, 0%, 10%) !important;
+  text-shadow: none;
+  font-weight: 600;
+}
+
+/* Orange background text enhancement */
+.on-orange-bg {
+  color: hsl(0, 0%, 100%) !important;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
+  font-weight: 700;
+}
+
+.on-orange-bg-light {
+  color: hsl(0, 0%, 100%) !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+  font-weight: 600;
+}
+
+.dark {
+  --background: hsl(240, 10%, 4%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 4%, 16%);
+  --muted-foreground: hsl(240, 5%, 65%);
+  --popover: hsl(240, 10%, 4%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 4%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 4%, 16%);
+  --input: hsl(240, 4%, 16%);
+  --primary: hsl(23, 95%, 53%);
+  --primary-foreground: hsl(0, 0%, 100%);
+  --secondary: hsl(240, 4%, 16%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(240, 4%, 16%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 63%, 31%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(240, 5%, 84%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+  }
+}
+
+@layer utilities {
+  .emparo-orange {
+    color: var(--emparo-orange);
+  }
+  
+  .bg-emparo-orange {
+    background-color: var(--emparo-orange);
+  }
+  
+  .emparo-black {
+    color: var(--emparo-black);
+  }
+  
+  .bg-emparo-black {
+    background-color: var(--emparo-black);
+  }
+  
+  .emparo-white {
+    color: var(--emparo-white);
+  }
+  
+  .bg-emparo-white {
+    background-color: var(--emparo-white);
+  }
+
+  .hero-bg {
+    background: linear-gradient(135deg, rgba(15, 15, 15, 0.8) 0%, rgba(249, 115, 22, 0.2) 100%);
+  }
+
+  .navbar-glass {
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.95);
+    border-bottom: 1px solid rgba(249, 115, 22, 0.1);
+  }
+
+  .smooth-scroll {
+    scroll-behavior: smooth;
+  }
+
+  .card-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .card-hover:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  }
+}
+
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(20px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+@keyframes slideUp {
+  from { 
+    transform: translateY(30px); 
+    opacity: 0; 
+  }
+  to { 
+    transform: translateY(0); 
+    opacity: 1; 
+  }
+}
+
+@keyframes bounceGentle {
+  0%, 20%, 50%, 80%, 100% { 
+    transform: translateY(0); 
+  }
+  40% { 
+    transform: translateY(-10px); 
+  }
+  60% { 
+    transform: translateY(-5px); 
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.6s ease-out;
+}
+
+.animate-bounce-gentle {
+  animation: bounceGentle 2s infinite;
+}

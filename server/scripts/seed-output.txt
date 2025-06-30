@@ -1,0 +1,15 @@
+Connecting to till system database...
+Fetching categories from till system...
+Error fetching till data: LibsqlError: SERVER_ERROR: Server returned HTTP status 401
+    at mapHranaError (file:///home/runner/workspace/node_modules/@libsql/client/lib-esm/hrana.js:279:16)
+    at file:///home/runner/workspace/node_modules/@libsql/client/lib-esm/http.js:76:23
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async generateSeedData (/home/runner/workspace/server/scripts/seed-from-till.ts:16:30) {
+  code: 'SERVER_ERROR',
+  rawCode: undefined,
+  [cause]: HttpServerError: Server returned HTTP status 401
+      at errorFromResponse (file:///home/runner/workspace/node_modules/@libsql/hrana-client/lib-esm/http/stream.js:352:16)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5) {
+    status: 401
+  }
+}
